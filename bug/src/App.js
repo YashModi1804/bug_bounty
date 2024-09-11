@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import BugBounty from "./images/Bug-Bounty.webp"
+
 
 const questions = {
   round1: {
@@ -102,7 +104,7 @@ const questions = {
   },
 };
 const rules = {
-  round1 : ["1. In this round you have 10 Question.", "2. For that you have 30 Minutes"],
+  round1 : ["1. In this round you have 10 Code Snippets.", "2. For that you have 30 Minutes.", "3. For each snippet, tick the line where you identify a bug.", "4. Bug can be a syntax or logical error.", "5. You can jump between questions freely within the time frame.", "6. Once you start, fullscreen mode will activate, and you can't exit without submission."],
   round2 : ["1. In this round you have 5 Question.", "2. For that you have 20 Minutes"],
   round3 : ["1. In this round you have 2 Question.", "2. For that you have 10 Minutes"]
 }
@@ -154,25 +156,54 @@ function App() {
 
   return (
     <div className="app-container">
+      
+      
       {!selectedRound ? (
+        <div style={{display: "flex"}}>
+          <div className='side-design'>
+            <div className='circle' />
+            <div className='line' />
+          </div>
         <div className="round-selection">
+          <div class='wrapper'>
+            <p class="neon-text" data-text="Techvaganza 2024">Techvaganza 2024</p>
+          </div>
+
+          <div class="wrapper five">
+            <span class="float-box">
+                <h3 class="float bug">BUG BOUNTY</h3>
+            </span>
+         </div>
+
+
           <div className='heading'>
-            <h1 className='bug'>Bug Bounty</h1>
-            <h4>Powerd By <span className='code_assist'>Code Assist</span></h4>
+            <h4>Powered By <span className='code_assist'>Code Assist</span></h4>
           </div>
           <div>
-            <h1>Select Round</h1>
+            <h1 style={{fontFamily : "cursive", marginTop:"0px"}}>Let's Start</h1>
             <button onClick={() => handleRoundSelection('round1')}>Round 1</button>
             <button onClick={() => handleRoundSelection('round2')}>Round 2</button>
             <button onClick={() => handleRoundSelection('round3')}>Round 3</button>
           </div>
         </div>
+        <div className='side-design'>
+          <div className='circle' />
+          <div className='line' />
+      </div>
+        </div>
       ) : (
-        <div>
+        <div >
+          
           {showRules ? (
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', height: '100vh', margin: "70px"}}>
+              <div><img style={{marginRight: "40px"}} src={BugBounty} alt="#" />
+          <p style={{ textAlign: 'center', marginTop: '10px', fontSize: '18px', color: 'white', fontWeight:"bold" }}>
+        "Unleash your skills and conquer the bugs - the challenge awaits!"
+        </p>
+          </div>
             <div className="rules-popup">
               <div>
-                <h2>Rules</h2>
+                <h2 style={{textAlign: "center", borderBottom : "2px solid", fontSize:"30px", marginTop:"0"}}>Rules</h2>
                 {rules[selectedRound].map((rule,index) => (
                   <p key={index}>{rule}</p>
                 ))}
@@ -188,6 +219,7 @@ function App() {
                 </label>
               </div>
               <button onClick={handleOkClick}>Start</button>
+              </div>
             </div>
           ) : (
             <div className="main-content">
@@ -198,7 +230,7 @@ function App() {
                     key={question.id}
                     onClick={() => handleQuestionSelection(question)}
                   >
-                    Question {question.id}
+                     {question.id}
                   </button>
                 ))}
               </div>
@@ -229,6 +261,7 @@ function App() {
             </div>
           )}
         </div>
+        
       )}
     </div>
   );
