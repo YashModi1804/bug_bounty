@@ -193,15 +193,14 @@ function App() {
         </div>
       ) : (
         <div >
-          
           {showRules ? (
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', height: '100vh', margin: "70px"}}>
-              <div><img style={{marginRight: "40px"}} src={BugBounty} alt="#" />
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', height: '100vh', margin: "0px"}}>
+              <div><img style={{marginRight: "40px", marginTop:"70px"}} src={BugBounty} alt="#" />
           <p style={{ textAlign: 'center', marginTop: '10px', fontSize: '18px', color: 'white', fontWeight:"bold" }}>
         "Unleash your skills and conquer the bugs - the challenge awaits!"
         </p>
           </div>
-            <div className="rules-popup">
+            <div style={{marginTop:"70px"}} className="rules-popup">
               <div>
                 <h2 style={{textAlign: "center", borderBottom : "2px solid", fontSize:"30px", marginTop:"0"}}>Rules</h2>
                 {rules[selectedRound].map((rule,index) => (
